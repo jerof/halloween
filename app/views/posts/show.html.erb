@@ -3,6 +3,7 @@
     <h1 class="show-page"><%= @post.title %></h1>
 
     <p class="lead"><%= @post.description %></p>
+    <h4><%= @post.location.name %></h4>
     <div class="image">
       <%= image_tag @post.image.url(:image_show) %>
     </div>

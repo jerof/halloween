@@ -1,5 +1,12 @@
 <div class="col-md-6 col-md-offset-3">
   <h1>Edit Post</h1>
 
-  <%= render 'form' %>
+  <%= simple_form_for @post, :html => { :multipart => true } do |f| %>
+    <%= f.select :location_id, @locations %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :image, as: :file %>
+    <%= f.button :submit, class: "btn btn-lg btn-primary" %>
+  <% end %>
+
 </div>
