@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <div class="col-md-6 col-md-offset-3">
   <div class="row">
     <% @posts.each do |post| %>
@@ -5,7 +6,32 @@
           <!--<a href="/posts/<%= post.id %>">
             <%= image_tag post.image.url(:image_index) %>
           </a>-->
-      <p>Submitted by <%= post.user.email %> <%= time_ago_in_words(post.created_at) %> ago</p>
+      <p>Submitted by <%= post.user.username %> <%= time_ago_in_words(post.created_at) %> ago</p>
+      <%= link_to like_post_path(post), method: :put do %>
+        <i class="fa fa-caret-up"></i>
+      <% end %>
     <% end %>
   </div>
 </div>
+<% else %>
+<div class="col-md-8 col-md-offset-2">
+  <div class="jumbotron">
+    <h1>Welcome to Halloween!</h1>
+    <p>Vote for your best houses!</p>
+  </div>
+</div>
+<div class="col-md-6 col-md-offset-3">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <h2><%= link_to post.title, post_path(post) %></h2>
+          <!--<a href="/posts/<%= post.id %>">
+            <%= image_tag post.image.url(:image_index) %>
+          </a>-->
+      <p>Submitted by <%= post.user.username %> <%= time_ago_in_words(post.created_at) %> ago</p>
+      <%= link_to like_post_path(post), method: :put do %>
+        <i class="fa fa-caret-up"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<% end %>

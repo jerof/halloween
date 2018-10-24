@@ -2,13 +2,17 @@
   <div class="col-md-6 col-md-offset-3">
   <h1><%= @post.title %></h1>
   <p class="lead"><%= @post.description %></p>
-  <p>Submitted by <%= @post.user.email %> <%= time_ago_in_words(@post.created_at) %> ago</p>
+  <p>Submitted by <%= @post.user.username %> <%= time_ago_in_words(@post.created_at) %> ago</p>
   <%= image_tag @post.image.url(:image_show) %>
   </div>
 </div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= link_to "Back", root_path, class: "btn btn-default" %>
+    <%= link_to like_post_path(@post), method: :put do %>
+      Upvote
+      <%= @post.get_upvotes.size %>
+    <% end %>
     <% if user_signed_in? %>
       <% if @post.user == current_user %>
       <div class="btn-group">
@@ -24,5 +28,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <!-- Add comments here -->
+    <%= render @post.comments %>
+    <%= render 'comments/form' %>
   </div>
 </div>
