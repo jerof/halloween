@@ -1,31 +1,35 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  <h1><%= @post.title %></h1>
-  <p class="lead"><%= @post.description %></p>
-  <p>Submitted by <%= @post.user.username %> <%= time_ago_in_words(@post.created_at) %> ago</p>
-  <%= image_tag @post.image.url(:image_show) %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= link_to "Back", root_path, class: "btn btn-default" %>
-    <%= link_to like_post_path(@post), method: :put do %>
-      Upvote
-      <%= @post.get_upvotes.size %>
-    <% end %>
-    <% if user_signed_in? %>
-      <% if @post.user == current_user %>
-      <div class="btn-group">
-        <%= link_to "Edit", edit_post_path(@post), class: "btn btn-default" %>
-        <%= link_to "Delete", post_path(@post), method: :delete,
-                          data: { confirm: "Are you sure?" }, class: "btn btn-default"  %>
-      </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+    <h1 class="show-page"><%= @post.title %></h1>
 
-<div class="row">
+    <p class="lead"><%= @post.description %></p>
+    <div class="image">
+      <%= image_tag @post.image.url(:image_show) %>
+    </div>
+    <small>Submitted by <%= @post.user.username %> <%= time_ago_in_words(@post.created_at) %> ago</small>
+  </div>
+
+    <div class="col-md-6 col-md-offset-3 buttons">
+      <%= link_to "Back", root_path, class: "btn btn-default" %>
+      <% if user_signed_in? %>
+        <div class="btn-group pull-right">
+        <%= link_to like_post_path(@post), method: :put, class:"btn btn-default" do %>
+          Upvote
+          <%= @post.get_upvotes.size %>
+        <% end %>
+        </div>
+        <% if @post.user == current_user %>
+        <div class="btn-group">
+          <%= link_to "Edit", edit_post_path(@post), class: "btn btn-default" %>
+          <%= link_to "Delete", post_path(@post), method: :delete,
+                            data: { confirm: "Are you sure?" }, class: "btn btn-default"  %>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+
+
+
   <div class="col-md-6 col-md-offset-3">
     <!-- Add comments here -->
     <%= render @post.comments %>

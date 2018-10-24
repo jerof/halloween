@@ -36,7 +36,8 @@ class PostsController < ApplicationController
 
   def upvote
     @post.upvote_by current_user
-    redirect_to post_path(@post)
+    flash[:notice] = "Post upvoted!"
+    redirect_to posts_path
   end
 
   def destroy

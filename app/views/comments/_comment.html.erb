@@ -1,7 +1,14 @@
-<p><%= comment.content %></p>
-<% if user_signed_in? %>
-<% if comment.user_id == current_user.id %>
-  <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-<% end %>
-<% end %>
+<div id="comment">
+  <div class="comments_wrapper clearfix">
+		<div class="pull-left">
+			<p class="lead"><%= comment.content %></p>
+			<p><small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by <%= comment.user.username %></small></p>
+		</div>
+
+		<div class="btn-group pull-right">
+			<% if comment.user == current_user %>
+				<%= link_to 'Destroy', post_comments_path(comment.post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %>
+			<% end %>
+		</div>
+	</div>
+</div>

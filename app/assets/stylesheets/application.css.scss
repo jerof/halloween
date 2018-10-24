@@ -17,3 +17,70 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome";
+
+body {
+  background-color: #c8d6e5;
+  padding-top: 70px;
+  .votes h2 {
+    margin-top: 0;
+    color: #337AB7;
+    font-size: 2em;
+    text-align: center;
+  }
+  h2 {
+    font-size: 1.7em;
+    a {
+      color: #ee5253;
+      &:hover {
+        color: #f368e0;
+      }
+    }
+  }
+  .show-page {
+    color: #ee5253 !important;
+  }
+}
+
+.jumbotron {
+  background-color: #ff6b6b;
+  color: #FFF;
+}
+
+ #logo {
+ 	font-size: 26px;
+ 	font-weight: 700;
+ 	text-transform: uppercase;
+ 	letter-spacing: -1px;
+ 	padding: 15px 0;
+ }
+
+ .center {
+     margin: auto;
+     width: 50%;
+ }
+
+.image-index {
+  height: 100px;
+  width: 100px;
+}
+
+.image-show {
+  height: 400px;
+  width: 560px;
+}
+
+.well {
+  height: 150px;
+  background-color: #fff;
+  border: 2px solid #ff6b6b;
+}
+
+#caret {
+  padding-top: 50px;
+}
+
+.buttons {
+  border-top: 2px dashed #ff6b6b;
+  padding: 20px 10px 10px 10px;
+  margin-top: 30px;
+}

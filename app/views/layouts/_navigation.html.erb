@@ -1,20 +1,17 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #c8d6e5; border-bottom: 0px;">
   <div class="container">
     <div class="navbar-header">
-      <%= link_to "Halloween", root_path, class: "navbar-brand" %>
+      <%= link_to "Halloween", root_path, class: "navbar-brand", id: "logo", style: "color: #ee5253" %>
     </div>
     <ul class="nav navbar-nav navbar">
-      <% if !user_signed_in? %>
-        <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        <li><%= link_to "Log In", new_user_session_path %></li>
-      <% else %>
+      <% if user_signed_in? %>
         <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <li><%= link_to "Account", edit_user_registration_path %></li>
       <% end %>
     </ul>
     <% if user_signed_in? %>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "New Post", new_post_path %></li>
+      <li><%= link_to "New Post", new_post_path, id: "logo", style: "color: #ee5253" %></li>
     </ul>
     <% end %>
   </div>
