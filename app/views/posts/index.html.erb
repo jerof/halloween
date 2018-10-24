@@ -1,8 +1,11 @@
-
-
-<% @posts.each do |post| %>
-  <h2><%= link_to post.title, post_path(post) %></h2>
-<% end %>
-
-
-<%= link_to "New Post", new_post_path %>
+<div class="col-md-6 col-md-offset-3">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <h2><%= link_to post.title, post_path(post) %></h2>
+          <!--<a href="/posts/<%= post.id %>">
+            <%= image_tag post.image.url(:image_index) %>
+          </a>-->
+      <p>Submitted by <%= post.user.email %> <%= time_ago_in_words(post.created_at) %> ago</p>
+    <% end %>
+  </div>
+</div>
